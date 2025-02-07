@@ -29,7 +29,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Properties")
 	float RotationSpeedZ;
 
-	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Properties")
+	float MovementUpdateRate = 0.016f;
+	UPROPERTY()
+	FTimerHandle MovementTimerHandle;
 
+	virtual void BeginPlay() override;
+	void RotateActor();
 };

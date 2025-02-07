@@ -11,7 +11,7 @@ AItem2::AItem2()
 	StaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMeshComp->SetupAttachment(SceneRoot);
 
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 	
 }
 
@@ -19,20 +19,23 @@ void AItem2::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	GetWorld()->GetTimerManager().SetTimer(
+		MovementTimerHandle,
+		this,
+		&AItem2::RotateActor,
+		MovementUpdateRate,
+		true
+	);
 }
 
-void AItem2::Tick(float DeltaTime)
+void AItem2::RotateActor()
 {
-	Super::Tick(DeltaTime);
-
 	bool bShouldRotateX = !FMath::IsNearlyZero(RotationSpeedX);
 	bool bShouldRotateY = !FMath::IsNearlyZero(RotationSpeedY);
 	bool bShouldRotateZ = !FMath::IsNearlyZero(RotationSpeedZ);
-	
-	if (bShouldRotateX||bShouldRotateY||bShouldRotateZ)
+
+	if (bShouldRotateX || bShouldRotateY || bShouldRotateZ)
 	{
-		AddActorLocalRotation(FRotator(RotationSpeedX * DeltaTime, RotationSpeedZ * DeltaTime, RotationSpeedY*DeltaTime));
+		AddActorLocalRotation(FRotator(RotationSpeedX * MovementUpdateRate, RotationSpeedZ * MovementUpdateRate, RotationSpeedY * MovementUpdateRate));
 	}
-
 }
-
