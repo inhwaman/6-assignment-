@@ -30,9 +30,9 @@ protected:
 	float RotationSpeedZ;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Properties")
-	float MovementUpdateRate = 0.016f;
+	float RotationUpdateRate = 0.016f;
 	UPROPERTY()
-	FTimerHandle MovementTimerHandle;
+	FTimerHandle RotationTimerHandle;
 
 	virtual void BeginPlay() override;
 	void RotateActor();

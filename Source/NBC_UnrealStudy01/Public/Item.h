@@ -16,12 +16,12 @@ public:
 	AItem();
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item|Components")
 	USceneComponent* SceneRoot;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Item|Components")
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Item|Components")
 	UStaticMeshComponent* StaticMeshComp;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Item|Properties")
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Item|Properties")
 	float MoveSpeedX;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Properties")
 	float MoveSpeedY;
@@ -34,6 +34,7 @@ protected:
 	float MoveRangeY;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item|Properties")
 	float MoveRangeZ;
+
 	FVector CurrentLocation;
 	FVector MaxLocation;
 	FVector MinLocation;

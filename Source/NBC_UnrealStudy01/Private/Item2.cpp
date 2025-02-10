@@ -20,10 +20,10 @@ void AItem2::BeginPlay()
 	Super::BeginPlay();
 	
 	GetWorld()->GetTimerManager().SetTimer(
-		MovementTimerHandle,
+		RotationTimerHandle,
 		this,
 		&AItem2::RotateActor,
-		MovementUpdateRate,
+		RotationUpdateRate,
 		true
 	);
 }
@@ -36,6 +36,6 @@ void AItem2::RotateActor()
 
 	if (bShouldRotateX || bShouldRotateY || bShouldRotateZ)
 	{
-		AddActorLocalRotation(FRotator(RotationSpeedX * MovementUpdateRate, RotationSpeedZ * MovementUpdateRate, RotationSpeedY * MovementUpdateRate));
+		AddActorLocalRotation(FRotator(RotationSpeedX * RotationUpdateRate, RotationSpeedZ * RotationUpdateRate, RotationSpeedY * RotationUpdateRate));
 	}
 }

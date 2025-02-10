@@ -26,12 +26,6 @@ void AItemSpawner::SpawnItem()
 
 		FVector SpawnLocation(RandomX, RandomY, 80.0f);
 		FRotator SpawnRotation(0.0f, 0.0f, 0.0f);
-
-		AItem* SpawnItem = GetWorld()->SpawnActor<AItem>(ItemClass, SpawnLocation, SpawnRotation);
-
-		if (SpawnItem)
-		{
-			SpawnItem->SetLifeSpan(10.0f);
-		}
+		GetWorld()->SpawnActor<AItem3>(ItemClass, SpawnLocation, SpawnRotation);
 	}
 }
